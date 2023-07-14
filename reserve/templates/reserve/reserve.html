@@ -1,0 +1,32 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}RESERVE{% endblock title %}
+
+{% block navbar %}
+</ul>
+<a class="navbar-brand m-auto" href="#">
+<img src="assets/imgs/logo.svg" class="brand-img" alt="">
+<span class="brand-txt">کافه غذا</span>
+</a>
+<ul class="navbar-nav">
+{% endblock navbar %}
+
+{% block context %}
+<br><br><br><br><br><br>
+<div class='container'>
+<form method='POST' style="color:white;text-align:right;">
+{% csrf_token %}
+<h2>فرم رزرو</h2>
+<hr><br>
+{{form|crispy}}
+<br>
+<button class="btn btn-primary ml-xl-4" type='submit' style="color:white;font-size:20 ">رزرو میز</button>
+<br>
+</form>
+<br>
+
+
+
+
+
+{% endblock context %}

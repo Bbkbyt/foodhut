@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+
+{% block title %}LOGIN{% endblock title %}
+
+{% block context %}
+<br><br><br><br><br><br>
+<div class='container'>
+<form method='POST' style="color:white;text-align:right;">
+{% csrf_token %}
+<h2>فرم ورود</h2>
+<hr><br>
+{{form.as_p}}
+<button class="btn btn-outline-success" type='submit' style="color:white; ">ورود</button>
+</form>
+<br>
+{% comment %} <a href='{% url 'password_reset' %}'>forgot password</a> | <a href='{% url 'signup' %}'>register</a> {% endcomment %}
+</div>
+{% endblock context %}

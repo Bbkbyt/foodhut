@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+{% block title %}{{posts.name}}{% endblock title %}
+{% block context %}
+
+
+
+
+<div class="card mb-3">
+    <img src="{{posts.image.url}}" class="card-img-top" alt="...">
+  </div>
+<br><br><br><br><br><br><br><br><br>
+<div class="container-fluid bg-dark>
+  <div class="card mb-3" style="max-width: 100%px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{posts.image.url}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title" style='color:red;text-align:right;'>{{posts.name}}</h5>
+          <p class="card-text" style='color:white;text-align:right;'>{{posts.describtion}}</p>
+          <p class="card-text" style='color:white;text-align:right;'>{{posts.price}} تومان</p>
+          <p class="card-text" style='color:white;text-align:right;'><small class="text-body-secondary">آخرین آپدیت {{posts.created}}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock context %}

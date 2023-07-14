@@ -1,0 +1,216 @@
+
+{% extends '_base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block navbar %}
+<li class="nav-item">
+    <a class="nav-link" href="#about">درباره ما</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#gallary">منوی رستوران</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'reserve:reserve' %}">رزرو</a>
+</li>
+</ul>
+<a class="navbar-brand m-auto" href="#">
+<img src="assets/imgs/logo.svg" class="brand-img" alt="">
+<span class="brand-txt">کافه غذا</span>
+</a>
+<ul class="navbar-nav">
+<li class="nav-item">
+    <a class="nav-link" href="#blog">بلاگ غذا<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#contact">ارتباط با ما</a>
+</li>
+{% endblock navbar %}
+
+{% block header %}
+{% include 'header.html' %}
+{% endblock header %}   
+
+{% block context %}
+    <!--  About Section  -->
+    <div id="about" class="container-fluid wow fadeIn" id="about"data-wow-duration="1.5s">
+        <div class="row">
+            <div class="col-lg-6 has-img-bg"></div>
+            <div class="col-lg-6">
+                <div class="row justify-content-center" style="text-align:right;">
+                    <div class="col-sm-8 py-5 my-5">
+                        <h2 class="mb-4">درباره ما</h2>
+                        <p>هدف اصلی در این مجموعه ایجاد تجربه ای متمایز از غذاهای ایرانی تهیه شده از گوشت گوسفند و کباب های منحصر بفرد ایرانی و ارتقای چایگاه غذاها و سنت های ایرانی در میان علاقمندان در سطح بین المللی است. کافه غذا با مشعوف کردن میهمانان با ارائه بالاترین کیفیت غذاهای ایرانی که مطلوبیت جهانی دارد به مصرف کننده ها ارزش می دهد. این ارزش از همان مراحل اولیه که مواد اولیه است آغاز می گردد. تجربه چند دهه در تهیه مواد اولیه مرغوب و متمایز , ثبات کیفیت و گزینش غذاهایی که مطلوبیت عمومی و جهانی دارد و در آن لذت از طعم گوشت نقش اساسی دارد. کافه غذا در تنوع غذاها هارمونی متناسبی را حفظ کرده و غذاها را شایسته میهمانان ارائه می کند و این رویه را پیوسته حفظ کرده است.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  gallary Section  -->
+    <div id="gallary" class="text-center bg-dark text-light has-height-md middle-items wow fadeIn">
+        <h2 class="section-title">منوی رستوران</h2>
+    </div>
+    <div class="gallary row">
+        {% for post in posts %}
+        <div class="col-sm-6 col-lg-3 gallary-item wow fadeIn">
+            <img src="{{post.image.url}}" alt="" class="gallary-img" height='282.917px' width='282.917px'>
+            <a href="{{post.id}}" class="gallary-overlay">
+                <i class="gallary-icon ti-plus"></i>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- book a table Section  -->
+    {% comment %} <div class="container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" id="book-table">
+        <div class="">
+            <h2 class="section-title mb-5">BOOK A TABLE</h2>
+            <div class="row mb-5">
+                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                    <input type="email" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="EMAIL">
+                </div>
+                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                    <input type="number" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="NUMBER OF GUESTS" max="20" min="0">
+                </div>
+                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                    <input type="time" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="EMAIL">
+                </div>
+                <div class="col-sm-6 col-md-3 col-xs-12 my-2">
+                    <input type="date" id="booktable" class="form-control form-control-lg custom-form-control" placeholder="12/12/12">
+                </div>
+            </div>
+            <a href="#" class="btn btn-lg btn-primary" id="rounded-btn">FIND TABLE</a>
+        </div>
+    </div> {% endcomment %}
+
+    <!-- BLOG Section  -->
+    <div id="blog" class="container-fluid bg-dark text-light py-5 text-center wow fadeIn">
+        {% comment %} <h2 class="section-title py-5">EVENTS AT THE FOOD HUT</h2> {% endcomment %}
+        <div class="row justify-content-center">
+            <div class="col-sm-7 col-md-4 mb-5">
+                <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#foods" role="tab" aria-controls="pills-home" aria-selected="true">فست فود</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#irani" role="tab" aria-controls="pills-profile" aria-selected="false">غذاهای ایرانی</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#juices" role="tab" aria-controls="pills-profile" aria-selected="false">نوشیدنی</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="row">
+                    {% for post in posts %}
+                    {% if 'fastfood' in post.type %}
+                    <div class="col-md-4">
+                        <div class="card bg-transparent border my-3 my-md-0">
+                            <img src="{{post.image.url}}" alt="" class="rounded-0 card-img-top mg-responsive" width='185.317px' height='347.767px'>
+                            <div class="card-body">
+                                <h1 class="text-center mb-4"><a href="{{post.id}}" class="badge badge-primary">{{post.price}} تومان</a></h1>
+                                <h4 class="pt20 pb20">{{post.name}}</h4>
+                                <p class="text-white">{{post.describtion}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="tab-pane fade" id="irani" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="row">
+                    {% for post in posts %}
+                    {% if 'iranifood' in post.type %}
+                    <div class="col-md-4">
+                        <div class="card bg-transparent border my-3 my-md-0">
+                            <img src="{{post.image.url}}" alt="" class="rounded-0 card-img-top mg-responsive" width='185.317px' height='347.767px'>
+                            <div class="card-body">
+                                <h1 class="text-center mb-4"><a href="{{post.id}}" class="badge badge-primary">{{post.price}} تومان</a></h1>
+                                <h4 class="pt20 pb20">{{post.name}}</h4>
+                                <p class="text-white">{{post.describtion}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="tab-pane fade" id="juices" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="row">
+                    {% for post in posts %}
+                    {% if 'juices' in post.type %}
+                    <div class="col-md-4">
+                        <div class="card bg-transparent border my-3 my-md-0">
+                            <img src="{{post.image.url}}" alt="" class="rounded-0 card-img-top mg-responsive" width='185.317px' height='347.767px'>
+                            <div class="card-body">
+                                <h1 class="text-center mb-4"><a href="{{post.id}}" class="badge badge-primary">{{post.price}} تومان</a></h1>
+                                <h4 class="pt20 pb20">{{post.name}}</h4>
+                                <p class="text-white">{{post.describtion}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REVIEWS Section  -->
+    {% comment %} <div id="testmonial" class="container-fluid wow fadeIn bg-dark text-light has-height-lg middle-items">
+        <h2 class="section-title my-5 text-center">REVIEWS</h2>
+        <div class="row mt-3 mb-5">
+            <div class="col-md-4 my-3 my-md-0">
+                <div class="testmonial-card">
+                    <h3 class="testmonial-title">John Doe</h3>
+                    <h6 class="testmonial-subtitle">Web Designer</h6>
+                    <div class="testmonial-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nobis eligendi, quaerat accusamus ipsum sequi dignissimos consequuntur blanditiis natus. Aperiam!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-3 my-md-0">
+                <div class="testmonial-card">
+                    <h3 class="testmonial-title">Steve Thomas</h3>
+                    <h6 class="testmonial-subtitle">UX/UI Designer</h6>
+                    <div class="testmonial-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum minus obcaecati cum eligendi perferendis magni dolorum ipsum magnam, sunt reiciendis natus. Aperiam!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 my-3 my-md-0">
+                <div class="testmonial-card">
+                    <h3 class="testmonial-title">Miranda Joy</h3>
+                    <h6 class="testmonial-subtitle">Graphic Designer</h6>
+                    <div class="testmonial-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, nam. Earum nobis eligendi, dignissimos consequuntur blanditiis natus. Aperiam!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+    <!-- CONTACT Section  -->
+    <div id="contact" class="container-fluid bg-dark text-light border-top wow fadeIn">
+        <div class="row">
+            <div class="col-md-6 px-0">
+                <div id="map" style="width: 100%; height: 100%; min-height: 400px"></div>
+            </div>
+            <div class="col-md-6 px-5 has-height-lg middle-items">
+                <h3>FIND US</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, laboriosam doloremque odio delectus, sunt magnam laborum impedit molestiae, magni quae ipsum, ullam eos! Alias suscipit impedit et, adipisci illo quam.</p>
+                <div class="text-muted">
+                    <p><span class="ti-location-pin pr-3"></span> 12345 Fake ST NoWhere, AB Country</p>
+                    <p><span class="ti-support pr-3"></span> (123) 456-7890</p>
+                    <p><span class="ti-email pr-3"></span>info@website.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock context %}

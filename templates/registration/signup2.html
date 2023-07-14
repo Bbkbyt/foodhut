@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+
+{% block title %}فرم ثبت نام{% endblock title %}
+
+{% block context %}
+<br><br><br><br><br><br>
+<div class='container'>
+<form method='POST' style="color:white;text-align:right;" action={% url 'accounts:signup' %}>
+  {% if error_message %}
+  <div class="alert alert-danger d-flex align-items-center" role="alert" style="height:60px">
+      {{error_message}}
+  </div>
+  {% endif %}
+{% csrf_token %}
+<h2>فرم ثبت نام</h2>
+<hr><br>
+{{form.as_p}}
+<button class="btn btn-outline-danger" type='submit' style="color:white; ">ثبت نام</button>
+</form>
+</div>
+<br><br><br>
+{% endblock context %}
+{% comment %} 
+{% block footer %}
+<div style="position:absolute;width:1350px;background-color: #283618;">
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link active" style="color:#d8e2dc;">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active" style="color:#d8e2dc;">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active" style="color:#d8e2dc;">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active" style="color:#d8e2dc;">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link active" style="color:#d8e2dc;">About</a></li>
+      </ul>
+      <p style="color:#d8e2dc; text-align:center;">© 2023 Company, Inc</p>
+    </footer>
+  </div>
+{% endblock footer %} {% endcomment %}
